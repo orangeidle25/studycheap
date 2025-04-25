@@ -1,0 +1,75 @@
+/* style.css */
+
+body {
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.header {
+    backdrop-filter: blur(5px);
+}
+
+/* Ensure content is not hidden behind fixed header */
+main {
+    padding-top: 100px; /* Increased padding to avoid overlap with the floating header */
+}
+
+/* CSS for the Logo Carousel */
+.logo-carousel-container {
+    width: 100%; /* Container takes full width */
+    overflow: hidden; /* Hides the overflowing logos */
+}
+
+.logo-carousel {
+    display: flex;
+    animation: scroll-logos 20s linear infinite; /* Adjust duration as needed */
+}
+
+.logo-carousel img {
+    flex-shrink: 0; /* Prevent logos from shrinking */
+    /* Tailwind classes for height, margin, grayscale, and opacity are in HTML */
+}
+
+/* Keyframes for the horizontal scrolling animation */
+@keyframes scroll-logos {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Translate by the width of one set of logos */
+        transform: translateX(-50%);
+    }
+}
+
+/* Animation for float-in effect */
+@keyframes float-in {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Start slightly below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* End at original position */
+    }
+}
+
+/* Initial hidden state */
+.initial-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Class to apply animation */
+.float-up {
+    animation: float-in 0.8s ease-out forwards; /* Adjust duration and timing as needed */
+}
